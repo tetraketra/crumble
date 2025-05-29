@@ -57,6 +57,8 @@ prandom* _prngn1(u64 seed) {
 	Free a pRNG generator.
 */
 void prandom_free(prandom* pr) {
+	ASSERT_RUNTIME(pr != NULL);
+
 	free(pr);
 }
 
@@ -67,6 +69,8 @@ void prandom_free(prandom* pr) {
     @note see: https://prng.di.unimi.it/xoshiro256plusplus.c
 */
 u64 prandom_next(prandom* pr) {
+	ASSERT_RUNTIME(pr != NULL);
+
 	const u64 result = _rotl(pr->_s[0] + pr->_s[3], 23) + pr->_s[0];
 	const u64 t = pr->_s[1] << 17;
 
@@ -88,6 +92,8 @@ u64 prandom_next(prandom* pr) {
 	@note The returned value is the *next* value, not the seed.
 */
 u64 prandom_seed(prandom* pr, u64 seed) {
+	ASSERT_RUNTIME(pr != NULL);
+
 	seed = ((seed << 45) | (seed >> 19)) * UINT64_C(0x94D049BB133111EB);
 	seed ^= ((seed >> 10) | (seed << 4)) * UINT64_C(0xBF58476D1CE4E5B9);
 
@@ -105,6 +111,8 @@ u64 prandom_seed(prandom* pr, u64 seed) {
 	@note see: https://github.com/svaarala/duktape/blob/master/misc/splitmix64.c
 */
 u64 prandom_rseed(prandom* pr) {
+	ASSERT_RUNTIME(pr != NULL);
+	
 	pr->_s[0] = _smix64();
 	pr->_s[1] = _smix64();
 	pr->_s[2] = _smix64();

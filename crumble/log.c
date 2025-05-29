@@ -29,6 +29,8 @@ static void __attribute__((constructor)) _stderr_color_support() {
     @note Recommended buffer size of 32.
 */
 void strf_iso8601_utc_time(char* buffer, usize size) {
+    ASSERT_RUNTIME(buffer != NULL);
+
     struct timeval tv;
     gettimeofday(&tv, NULL);
 

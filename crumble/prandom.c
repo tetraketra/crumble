@@ -4,7 +4,7 @@ struct prandom {
 	u64 _s[4]; /* The internal random state. */
 };
 
-size_t prandom_size = sizeof(prandom);
+usize prandom_size = sizeof(prandom);
 
 /* `xoshiro256++ 1.0` rotater function (used in `prandom_next`). */
 static inline u64 _rotl(const u64 x, i8 k) {

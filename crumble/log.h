@@ -28,6 +28,6 @@ static char* _lglvlc[5] = { "\x1b[34mDBG\x1b[0m","\x1b[32mINF\x1b[0m","\x1b[33mW
 
 extern int  log_min_level;
 extern bool log_is_color_terminal;
-extern void strf_iso8601_utc_time(char *buffer, size_t size);
+extern void strf_iso8601_utc_time(char *buffer, usize size);
 
 #endif

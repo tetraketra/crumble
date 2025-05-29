@@ -7,7 +7,7 @@
 #include "common.h"
 
 typedef struct prandom prandom;
-extern size_t prandom_size; /* Total size, including internals. */
+extern usize prandom_size; /* Total size, including internals. */
 
 /*
 	Create a new pRNG generator on the heap.

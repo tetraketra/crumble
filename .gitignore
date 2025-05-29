@@ -1,9 +1,3 @@
 # standard
 .vscode
-build
-
-# personal build script stuff
-build.sh
-run.sh
-dlclose.so
-main.c
+test

@@ -6,7 +6,7 @@ sudo sysctl vm.mmap_rnd_bits=28 > /dev/null 2>&1
 sudo sysctl vm.mmap_rnd_compat_bits=8 > /dev/null 2>&1
 
 # [build]
-FILES=$(find . -print | grep -i "\.c$" | tr -s '\n' ' ')
+FILES=$(find . -print | grep -i "\.c$" | tr -s '\n' ' ') # This is insane for a reason not shown here.
 WARNS="-W -Wall -Wextra -Wno-multichar -Wno-comment -Wno-misleading-indentation -Wno-uninitialized -Wno-unused-variable"
 FSANS="-fsanitize=address -fsanitize=undefined -fsanitize-address-use-after-scope" # FOR RELEASE, CLEAR THIS AND REMOVE THE DLCLOSE EXPORT
 LINKS=""

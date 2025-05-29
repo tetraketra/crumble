@@ -21,7 +21,7 @@
     @note In the future, it might be useful to put an `if` here 
     to dynamically control what's logged (by min log level).
 */
-#define LOG(stream, loglvl, fmt, ...) do { if (loglvl >= log_min_level) { char timestamp[32]; strf_iso8601_utc_time(timestamp, sizeof(timestamp)); u64 len = strlen(fmt); fprintf(stream, "[%s][%s][%s:%d:%s] "fmt"%c", log_is_color_terminal ? _lglvlc[loglvl] : _lglvl[loglvl], timestamp, basename(__FILE__), __LINE__, __FUNCTION__, ##__VA_ARGS__, ((len > 0 && fmt[len - 1] == '\n') ? '\0' : '\n')); } } while (0)
+#define LOG(stream, loglvl, fmt, ...) do { if (loglvl >= log_min_level) { char timestamp[32]; strf_iso8601_utc_time(timestamp, sizeof(timestamp)); u64 len = strlen(fmt); fprintf(stream, "[%s][%s][%s:%d:%s] "fmt"%c", ((stream == stderr) && log_is_color_terminal) ? _lglvlc[loglvl] : _lglvl[loglvl], timestamp, basename(__FILE__), __LINE__, __FUNCTION__, ##__VA_ARGS__, ((len > 0 && fmt[len - 1] == '\n') ? '\0' : '\n')); } } while (0)
 typedef enum logLevel { LOG_DEBUG, LOG_INFO, LOG_WARN, LOG_ERROR, LOG_FATAL } logLevel;
 static char* _lglvl[5] = { "DBG", "INF", "WRN", "ERR", "FTL" };
 static char* _lglvlc[5] = { "\x1b[34mDBG\x1b[0m","\x1b[32mINF\x1b[0m","\x1b[33mWRN\x1b[0m","\x1b[31mERR\x1b[0m","\x1b[31mFTL\x1b[0m" };

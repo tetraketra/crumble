@@ -2,9 +2,8 @@
 Aggressively gcc+*nix C macros, modules, and tools. 
 
 ### 🛠️ Features 🛠️
-1. opaque types for simplified usage.
-2. optimized-away runtime asserts.
-3. overloaded macros for variadic behavior.
+1. optimized-away runtime asserts.
+2. overloaded macros for variadic behavior.
 
 Dedicated Modules:
 1. `common.h`, common and miscellaneous macros of non-template libraries.
